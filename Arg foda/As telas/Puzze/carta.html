@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Carta - ARG Ventilar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #2b2b2b;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Courier New', monospace;
+        }
+        .container {
+            perspective: 1200px;
+        }
+        .carta {
+            width: 400px;
+            height: 500px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg);
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+        .carta.aberta {
+            transform: rotateX(180deg);
+        }
+        .frente, .verso {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 30px;
+            box-sizing: border-box;
+        }
+        .frente {
+            background: #f9e7c2;
+            background-image: linear-gradient(145deg, #f9e7c2 0%, #f5d8a7 100%);
+            border: 2px solid #aa8c6e;
+            transform: rotateX(0deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Georgia', serif;
+        }
+        .frente h2 {
+            font-size: 28px;
+            color: #5a3e2b;
+            text-shadow: 2px 2px 0 #e0c9a6;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+        .frente .selo {
+            width: 80px;
+            height: 80px;
+            background: #b33e3e;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f5d8a7;
+            font-size: 40px;
+            box-shadow: 0 0 0 4px #7a2e2e, 0 0 0 8px #f9e7c2;
+            margin-top: 30px;
+        }
+        .frente .fita {
+            width: 100%;
+            height: 30px;
+            background: #b33e3e;
+            margin: 15px 0;
+            transform: rotate(-3deg);
+            opacity: 0.8;
+        }
+        .verso {
+            background: #eedcc7;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23eedcc7"/><path d="M10 10 L 90 10 L 90 90 L 10 90 Z" stroke="%23aa8c6e" stroke-width="1" fill="none"/></svg>');
+            transform: rotateX(180deg);
+            color: #2c1e12;
+            font-size: 20px;
+            line-height: 1.6;
+            font-family: 'Homemade Apple', 'Bradley Hand', 'Courier New', cursive;
+            word-wrap: break-word;
+            position: relative;
+            overflow-y: auto;
+        }
+        .conteudo {
+            position: relative;
+            z-index: 2;
+            text-align: left;
+            padding-right: 10px;
+        }
+        .conteudo p {
+            margin: 15px 0;
+            transform: rotate(-0.5deg);
+            text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+        }
+        .tremido {
+            animation: tremer 0.5s infinite;
+            display: inline-block;
+        }
+        @keyframes tremer {
+            0% { transform: translate(0px, 0px) rotate(0deg); }
+            20% { transform: translate(-1px, 1px) rotate(-0.5deg); }
+            40% { transform: translate(1px, -1px) rotate(0.5deg); }
+            60% { transform: translate(-1px, 0px) rotate(-0.2deg); }
+            80% { transform: translate(1px, 1px) rotate(0.2deg); }
+            100% { transform: translate(0px, 0px) rotate(0deg); }
+        }
+        .mancha {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            width: 100px;
+            height: 70px;
+            background: #8b1e1e;
+            border-radius: 50% 30% 70% 20% / 40% 50% 50% 30%;
+            filter: blur(3px) drop-shadow(0 0 5px #4a0000);
+            opacity: 0.9;
+            transform: rotate(10deg);
+            z-index: 1;
+            mix-blend-mode: multiply;
+        }
+        .mancha::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            width: 40px;
+            height: 30px;
+            background: #b32e2e;
+            border-radius: 60% 40% 50% 50%;
+            filter: blur(4px);
+            opacity: 0.7;
+            transform: rotate(-15deg);
+        }
+        .instrucao {
+            text-align: center;
+            margin-top: 20px;
+            color: #ccc;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta" id="carta" onclick="this.classList.toggle('aberta')">
+            <div class="frente">
+                <h2>VENTILAR</h2>
+                <div class="fita"></div>
+                <div class="selo">⚡</div>
+                <p style="margin-top: 30px; font-size: 14px; color: #7a5a3e;">(Clique para abrir)</p>
+            </div>
+            <div class="verso">
+                <div class="conteudo">
+                    <p class="tremido" style="font-size: 22px; margin-bottom: 25px;">Eles estão atrás de quem vem</p>
+                    <p class="tremido" style="margin-left: 15px;">atrás da verdade.</p>
+                    <p class="tremido" style="margin-top: 25px;">Eu vejo que você está buscando,</p>
+                    <p class="tremido" style="margin-left: 20px;">mas pare aqui.</p>
+                    <p class="tremido" style="margin-top: 20px; font-weight: bold;">É perigoso continuar...</p>
+                    <p class="tremido" style="margin-top: 25px;">Tem pessoas que querem ver você viva...</p>
+                    <p class="tremido" style="margin-top: 20px;">eles já estã-</p>
+                </div>
+                <!-- Mancha de sangue -->
+                <div class="mancha"></div>
+                <!-- Pequeno respingo extra -->
+                <div style="position: absolute; top: 70px; left: 50px; width: 20px; height: 15px; background: #8b1e1e; border-radius: 40% 60% 30% 70%; filter: blur(2px); opacity: 0.6; transform: rotate(30deg);"></div>
+                <div style="position: absolute; top: 150px; left: 280px; width: 25px; height: 20px; background: #a12323; border-radius: 50% 20% 80% 30%; filter: blur(3px); opacity: 0.5;"></div>
+            </div>
+        </div>
+        <div class="instrucao">Clique na carta para abrir/fechar</div>
+    </div>
+</body>
+</html>

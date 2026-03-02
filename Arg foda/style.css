@@ -1,0 +1,232 @@
+/* --- Ventilar: Edição Profissional --- */
+:root {
+    --primary-blue: #0A2F44; /* Azul Profundo da Logo */
+    --accent-blue: #00b4d8;
+    --bg-dark: #0f0f12; /* Fundo quase preto para combinar com o ventilador */
+    --text-light: #f8f9fa;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+/* --- Barra de Navegação --- */
+.navbar {
+    position: fixed; /* Fixa no topo ao rolar */
+    top: 0;
+    width: 100%;
+    padding: 15px 8%;
+    display: flex;
+    align-items: center;
+    background: rgba(15, 15, 18, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+/* --- Hero Section (Abertura) --- */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(15,15,18,1)), 
+                url('Ventilador.png') no-repeat center center/cover; /* Imagem do ventilador */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10%;
+}
+
+.hero-content {
+    max-width: 900px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem); /* Tamanho responsivo */
+    line-height: 1.1;
+    margin-bottom: 25px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    background: linear-gradient(to right, #fff, #7AA5C0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #a0a0a0;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    background: var(--text-light);
+    color: var(--bg-dark);
+    padding: 18px 45px;
+    text-decoration: none;
+    border-radius: 4px; /* Botão mais quadrado passa mais seriedade */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.cta-button:hover {
+    background: transparent;
+    color: white;
+    border-color: white;
+    transform: translateY(-5px);
+}
+
+/* --- Seções Gerais --- */
+section {
+    padding: 140px 10%;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+/* --- Quem Somos --- */
+.about {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-text p {
+    color: #cccccc;
+    margin-bottom: 20px;
+}
+
+.quote {
+    margin-top: 40px;
+    padding: 30px;
+    background: var(--glass);
+    border-left: 2px solid var(--accent-blue);
+    border-radius: 0 15px 15px 0;
+    font-style: italic;
+}
+
+/* --- Cards de Produtos --- */
+.services {
+    background-color: #141418;
+    text-align: center;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+
+.card {
+    background: var(--glass);
+    padding: 50px 40px;
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-align: left;
+}
+
+.card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent-blue);
+    transform: translateY(-15px);
+}
+
+.icon {
+    font-size: 45px;
+    margin-bottom: 25px;
+    filter: drop-shadow(0 0 10px rgba(0, 180, 216, 0.3));
+}
+
+.tech-detail {
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-top: 20px;
+}
+
+/* --- Rodapé --- */
+footer {
+    padding: 80px 10% 40px;
+    background: #08080a;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.copyright {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid var(--glass-border);
+    color: #555;
+    font-size: 0.8rem;
+}
+
+/* --- Ajustes Mobile --- */
+@media (max-width: 900px) {
+    .about { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 3rem; }
+    .navbar { justify-content: center; }
+}
+
+.espaco-ritual {
+    padding: 60px 10%;
+    text-align: center;
+    background-color: var(--bg-dark); /* Fundo escuro */
+}
+
+.mantra-escondido {
+    color: #0f0f12; /* Cor idêntica ao fundo */
+    text-decoration: none; /* Remove o sublinhado de link */
+    font-size: 1.2rem;
+    font-style: italic;
+    display: inline-block;
+    transition: all 0.5s ease;
+    cursor: default; /* O cursor só muda se ela selecionar */
+}
+
+/* Quando ela destaca/seleciona o texto */
+.mantra-escondido::selection {
+    background: #4A0C0C; /* Vermelho profundo do olho */
+    color: #ffffff;
+}
+
+/* Opcional: Quando ela passar o mouse após já saber que o link está lá */
+.mantra-escondido:hover {
+    cursor: pointer;
+}

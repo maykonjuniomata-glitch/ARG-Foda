@@ -1,0 +1,76 @@
+:root {
+            --bg-dark: #0f0f12;
+            --accent-red: #4A0C0C; /* Cor do olho da logo */
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            width: 350px;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-login {
+            height: 60px;
+            margin-bottom: 20px;
+            filter: grayscale(1); /* Fica cinza até ela acertar a senha */
+            transition: all 1s ease;
+        }
+
+        h2 { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-gray); margin-bottom: 30px; }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid #333;
+            color: white;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover { background: white; color: black; }
+
+       #error-msg {
+    display: none; /* Só aparece via JavaScript se errar a senha */
+    color: #4A0C0C;
+    margin-top: 10px;
+    font-size: 0.8rem;
+}
+       
+        @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}

@@ -1,0 +1,147 @@
+/* Configurações Gerais - O Abismo */
+:root {
+    --blood: #8b0000;
+    --text-color: #b0b0b0;
+    --bg-color: #050505;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at center, #1a0505 0%, #050505 100%);
+    color: var(--text-color);
+    font-family: 'Special Elite', Courier, monospace;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+}
+
+/* O Papel do Documento */
+.document {
+    max-width: 800px;
+    background: #0d0d0d;
+    padding: 60px;
+    border: 1px solid #1a1a1a;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 1), inset 0 0 30px rgba(139, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Marca d'água "CONFIDENCIAL" ao fundo */
+.document::before {
+    content: "RESTRICTED";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    font-size: 8rem;
+    color: rgba(255, 0, 0, 0.02);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Título de Impacto */
+h1 {
+    font-family: 'Cinzel', serif;
+    color: var(--blood);
+    text-align: center;
+    letter-spacing: 4px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 20px;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.5);
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    color: #d4af37; /* Um dourado envelhecido para os subtítulos */
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 30px;
+    display: block;
+    border-left: 3px solid var(--blood);
+    padding-left: 15px;
+}
+
+p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+    z-index: 1;
+    position: relative;
+}
+
+/* Destaques no texto */
+.highlight {
+    color: #ffffff;
+    background: rgba(139, 0, 0, 0.3);
+    padding: 2px 5px;
+    border-radius: 2px;
+}
+
+/* Caixa do Ritual */
+.ritual-description {
+    margin-top: 40px;
+    background: rgba(139, 0, 0, 0.03);
+    padding: 30px;
+    border: 1px dashed #444;
+    font-style: italic;
+    color: #ddd;
+    line-height: 2;
+    border-radius: 8px;
+}
+
+/* Logo do Olho */
+.eye-small {
+    display: block;
+    margin: 50px auto 20px;
+    width: 60px;
+    filter: grayscale(1) brightness(0.6);
+    transition: all 0.5s ease;
+    opacity: 0.7;
+}
+
+.eye-small:hover {
+    filter: grayscale(0) drop-shadow(0 0 15px var(--blood));
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.footer-note {
+    margin-top: 40px;
+    font-size: 0.7rem;
+    color: #333;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.aviso-sonoro {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.6rem;
+    color: #333;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 100;
+}
+
+/* Efeito de "tremida" na tela quando o som toca */
+@keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+
+.document:hover {
+    animation: glitch 0.3s infinite;
+    animation-play-state: paused;
+}
+
+/* Quando ela passar o mouse no documento, ele dá uma tremidinha leve */
+.document:active {
+    animation-play-state: running;
+}
